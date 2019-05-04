@@ -8,7 +8,7 @@ from oauth2client.client import GoogleCredentials
 from sklearn.utils.random import sample_without_replacement
 from sklearn.model_selection import train_test_split
 
-from datasets import ROOT_DATA_DIR, GDRIVE_DATA_ID
+from utils.datasets import ROOT_DATA_DIR, GDRIVE_DATA_ID
 
 import numpy as np
 
