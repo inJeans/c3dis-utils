@@ -61,9 +61,9 @@ def _get_data(filename=None):
     for f in file_list:
         # 3. Create & download by id.
         if filename == None:
-            _download_data(f["tile"], f["id"])
+            _download_data(f["title"], f["id"])
         elif f['title'] == filename:
-            _download_data(f["tile"], f["id"])
+            _download_data(f["title"], f["id"])
             
 
 def _download_data(filename, id):
