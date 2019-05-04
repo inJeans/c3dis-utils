@@ -13,7 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/inJeans/c3dis-utils",
     packages=["utils",
-              "utils.datasets"]
+              "utils.datasets"],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Programming Language :: Python :: 3",
