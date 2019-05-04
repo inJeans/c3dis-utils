@@ -25,12 +25,12 @@ def load_data(number_of_points=DEFAULT_NUMBER_POINTS,
     crystal_path = os.path.join(ROOT_DATA_DIR, "crystals.npy")
     clear_path = os.path.join(ROOT_DATA_DIR, "clear.npy")
 
-    if os.path.isfile(crystal_path):
+    if not os.path.isfile(crystal_path):
         _get_data("crystals.npy")
     crystal_array = np.load(crystal_path)
     crystal_target = np.ones(crystal_array.shape[0])
 
-    if os.path.isfile(clear_path):
+    if not os.path.isfile(clear_path):
         _get_data("clear.npy")
     clear_array = np.load(clear_path)
     clear_target = np.zeros(clear_array.shape[0])
