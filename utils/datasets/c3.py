@@ -60,7 +60,7 @@ def _get_data(filename=None):
 
     for f in file_list:
         # 3. Create & download by id.
-        if filename = None:
+        if filename == None:
             _download_data(f["tile"], f["id"])
         elif f['title'] == filename:
             _download_data(f["tile"], f["id"])
