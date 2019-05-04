@@ -56,7 +56,7 @@ def _get_data(filename=None):
 
     # 2. Auto-iterate using the query syntax
     file_list = drive.ListFile(
-        {'q': "{} in parents".format(GDRIVE_DATA_ID)}).GetList()
+        {'q': "'{}' in parents".format(GDRIVE_DATA_ID)}).GetList()
 
     for f in file_list:
         # 3. Create & download by id.
