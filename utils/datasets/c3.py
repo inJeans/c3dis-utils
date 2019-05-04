@@ -61,12 +61,12 @@ def _get_data(filename=None):
     for f in file_list:
         # 3. Create & download by id.
         if filename == None:
-            _download_data(f["title"], f["id"])
+            _download_data(drive, f["title"], f["id"])
         elif f['title'] == filename:
-            _download_data(f["title"], f["id"])
+            _download_data(drive, f["title"], f["id"])
             
 
-def _download_data(filename, id):
+def _download_data(drive, filename, id):
     print('title: %s, id: %s' % (filename, id))
     fname = os.path.join(ROOT_DATA_DIR, filename)
     print('downloading to {}'.format(fname))
