@@ -18,6 +18,10 @@ DEFAULT_TEST_SIZE = 0.2
 def load_data(number_of_points=DEFAULT_NUMBER_POINTS,
               test_size=DEFAULT_TEST_SIZE,
               seed=None):
+    if number_of_points > 50000:
+        raise Exception("""Sorry we do not have that much data,
+                           number_of_points should not exceed 50000""")
+
     crystal_path = os.path.join(ROOT_DATA_DIR, "crystals.npy")
     clear_path = os.path.join(ROOT_DATA_DIR, "clear.npy")
 
@@ -34,16 +38,19 @@ def load_data(number_of_points=DEFAULT_NUMBER_POINTS,
     data_array = np.vstack((crystal_array, clear_array))
     target_array = np.hstack((crystal_target, clear_target))
 
+    print("Sub-sampling dataset...")
     indices = sample_without_replacement(n_population=data_array.shape[0],
                                          n_samples=number_of_points,
                                          random_state=seed)
     subsampled_data = data_array[indices]
     subsampled_target = target_array[indices]
 
+    print("... shuffling and splitting")
     X_train, X_test, y_train, y_test = train_test_split(subsampled_data, subsampled_target,
                                                         test_size=test_size,
                                                         random_state=seed,
                                                         shuffle=True)
+    print("... done")
 
     return (X_train, y_train), (X_test, y_test)
 
@@ -56,7 +63,7 @@ def _get_data(filename=None):
 
     # 2. Auto-iterate using the query syntax
     file_list = drive.ListFile(
-        {'q': "'{}' in parents".format(GDRIVE_DATA_ID)}).GetList()
+        {"q": "'{}' in parents".format(GDRIVE_DATA_ID)}).GetList()
 
     for f in file_list:
         # 3. Create & download by id.
@@ -67,8 +74,8 @@ def _get_data(filename=None):
             
 
 def _download_data(drive, filename, id):
-    print('title: %s, id: %s' % (filename, id))
     fname = os.path.join(ROOT_DATA_DIR, filename)
-    print('downloading to {}'.format(fname))
+    print("Downloading datafile to {}...".format(fname))
     f_ = drive.CreateFile({'id': id})
     f_.GetContentFile(fname)
+    print(".., done")
