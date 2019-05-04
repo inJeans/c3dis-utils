@@ -20,4 +20,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
+    install_requires=[
+          "PyDrive",
+          "imbalanced-learn"
+      ],
 )
