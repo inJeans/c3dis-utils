@@ -75,7 +75,8 @@ def _get_data(filename=None):
 
 def _download_data(drive, filename, id):
     fname = os.path.join(ROOT_DATA_DIR, filename)
-    print("Downloading datafile to {}...".format(fname))
+    print("Downloading datafile to {} ...".format(fname))
     f_ = drive.CreateFile({'id': id})
     f_.GetContentFile(fname)
-    print(".., done")
+    print("... done")
+    print(" ")
