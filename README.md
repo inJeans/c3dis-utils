@@ -1,5 +1,3 @@
 # C3DIS Utilities Package
 
-This is a simple example package. You can use
-[Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
-to write your content.
+Some utility functions for the C3DIS ML Workshop.
